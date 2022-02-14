@@ -8,8 +8,17 @@ class QuestionForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'assignment': forms.Select(attrs={"class": 'form-control'}),
-            'title': forms.TextInput(attrs={ "class": 'form-control'}),
-            'tag_line': forms.TextInput(attrs={ "class": 'form-control'}),
-            'description': forms.Textarea(attrs={"class": 'form-control'}),
+            'assignment': forms.Select(attrs = {"class": 'form-control'}),
+            'title': forms.TextInput(attrs = {
+                    "class": 'form-control',
+                    'placeholder': 'Enter a title for the question...'
+                }),
+            'tag_line': forms.TextInput(attrs = {
+                     "class": 'form-control',
+                     'placeholder': 'Enter a brief one-liner about the question...'
+                    }),
+            'description': forms.Textarea(attrs = {
+                    "class": 'form-control',
+                    'placeholder': 'Describe the question in detail. Include images, tables, etc for clarity...'
+                }),
         }
