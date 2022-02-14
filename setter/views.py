@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib import messages
+from django.core.exceptions import ValidationError
 
 from .models import Assignment, Question
 from .forms import QuestionForm
@@ -45,6 +47,7 @@ def edit_question(request, pk):
         form = QuestionForm(request.POST, instance=my_question)
         if form.is_valid():
             form.save()
+            messages.success(request, "Edits made to the question have been saved")
             return redirect(reverse("setter:assignment-id", args=[assignment.id]))
 
     context = {
@@ -65,6 +68,7 @@ def add_question(request, pk):
         if form.is_valid():
             form.save()
             assignment_id = request.POST.get('assignment')
+            messages.success(request, "The added question has been saved")
             return redirect(reverse("setter:assignment-id", args=[assignment_id]))
 
     context = {
@@ -79,6 +83,7 @@ def delete_question(request, pk):
     question = Question.objects.get(id=pk)
     assignment = question.assignment
     question.delete()
+    messages.success(request, "The question has been deleted")
 
     return redirect(reverse("setter:assignment-id", args=[assignment.id]))
 
@@ -86,7 +91,15 @@ def add_assignment(request):
 
     assignment_name = request.POST.get("assignment-name")
     assignment = Assignment(title=assignment_name)
+    try:
+        assignment.full_clean()
+    except ValidationError as e:
+        print(e.__dict__)
+        messages.error(request, Assignment.validation_error_message())
+        return redirect(reverse("setter:assignments"))
+
     assignment.save()
+    messages.success(request, "The assignment has been added")
 
     return redirect(reverse("setter:assignment-id", args=[assignment.id]))
 
@@ -96,6 +109,7 @@ def rename_assignment(request, pk):
     assignment_name = request.POST.get("assignment-name")
     assignment.set_title(assignment_name)
     assignment.save()
+    messages.success(request, "The assignment has been renamed")
 
     return redirect(reverse("setter:assignment-id", args=[assignment.id]))
 
@@ -103,5 +117,6 @@ def delete_assignment(request, pk):
 
     assignment = Assignment.objects.get(id=pk)
     assignment.delete()
+    messages.success(request, "The assignment has been deleted")
 
     return redirect(reverse("setter:assignments"))
