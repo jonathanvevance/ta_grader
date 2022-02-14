@@ -153,3 +153,4 @@ cython_debug/
 
 # cache-files (my)
 *.pyc
+setter/migrations/
