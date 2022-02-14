@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 class Assignment(models.Model):
-    title = models.CharField(max_length=20, unique=True)
+    title = models.CharField(max_length=25, unique=True)
 
     def __str__(self):
         return self.title
@@ -12,7 +12,7 @@ class Assignment(models.Model):
 
     @classmethod
     def validation_error_message(self):
-        return "Assignment not added. Title can not have more than 20 characters"
+        return "Assignment not added. Title can not have more than 25 characters"
 
 class Question(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
