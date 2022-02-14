@@ -89,9 +89,10 @@
 
 <!-- TODO: clickable card -> modal with edit and delete buttons -->
 <!-- TODO: card with fixed size and ellipsis -->
+<!-- TODO: one modal, different content -->
 <div class="col-sm-4" id="questions">
     {% for question in questions %}
-    <div class="card mt-3">
+    <div class="card mt-3 mx-2">
         <div class="card-body">
             <h5 class="card-title">{{ question.title }} <a class="question-link"
                     href="{% url 'setter:edit-question' question.id %}">Edit</a> <a class="question-link" href="#"
