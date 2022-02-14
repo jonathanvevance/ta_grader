@@ -10,5 +10,6 @@ class QuestionForm(forms.ModelForm):
         widgets = {
             'assignment': forms.Select(attrs={"class": 'form-control'}),
             'title': forms.TextInput(attrs={ "class": 'form-control'}),
+            'tag_line': forms.TextInput(attrs={ "class": 'form-control'}),
             'description': forms.Textarea(attrs={"class": 'form-control'}),
         }

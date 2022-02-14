@@ -86,15 +86,13 @@
 
 <!------------------------------------------------- CONTENT ----------------------------------------------------->
 <!--------------------------------------------------------------------------------------------------------------->
-<!-- TODO: question with tagline and description separate. -->
-<!-- TODO: show description only in modal. -->
 <div class="col-sm-4" id="questions">
     {% for question in questions %}
     <div class="card mt-3 mx-2">
         <div class="card-body">
             <h5 class="card-title">{{ question.title }}<a class="question-link stretched-link" href="#"
                     data-bs-toggle="modal" data-bs-target="#question-modal-{{ question.id }}"></a></h5>
-            <p class="card-text">{{ question.description|safe }}</p>
+            <p class="card-text">{{ question.tag_line }}</p>
         </div>
     </div>
 
@@ -102,11 +100,17 @@
         aria-labelledby="question-modal-{{ question.id }}-label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header flex-wrap pb-2">
                     <h5 class="modal-title" id="question-modal-{{ question.id }}-label">{{ question.title }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <!-- Line breaking from flex container -->
+                    <div class="break"></div>
+                    <p class=" mb-0">{{ question.tag_line }}</p>
                 </div>
-                <div class="modal-body">{{ question.description|safe }}</div>
+                <div class="modal-body py-0">
+                    <p>{{ question.description|safe }}</p>
+                </div>
                 <div class="modal-footer">
                     <a href="{% url 'setter:edit-question' question.id %}" class="btn btn-primary button">Edit
                         Question</a>

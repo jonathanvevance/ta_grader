@@ -10,6 +10,7 @@ class Assignment(models.Model):
 class Question(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, null=True, blank=True)
+    tag_line = models.CharField(max_length=100, null=True, blank=True)
     description = RichTextField(null=True, blank=True)
 
     def __str__(self):

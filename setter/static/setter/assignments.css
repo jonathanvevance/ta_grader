@@ -75,3 +75,12 @@
 .float-btn:hover {
 	transform: scale(1.05);
 }
+
+/* https://codepen.io/pafnuty/pen/XWJRgbJ */
+/* Line breaking from flex container */
+.break {
+	flex-basis: 100%;
+	height: 0;
+    width: 100%;
+    overflow: hidden;
+  }
