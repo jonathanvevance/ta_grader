@@ -3,11 +3,17 @@
     /* Remove scrollbar space */
 }
 
-/* * {
-    border: 2px solid red;
-} */
+/* Instructions */
+#instructions #header {
+    margin-left: 10%;
+}
 
+#instructions #body {
+    font-size: 150%;
+    margin-left: 10%;
+}
 
+/* Sidebar */
 #sidebar {
     position: absolute;
     top: 55px;
@@ -18,6 +24,18 @@
     /* border: 2px solid red; */
 }
 
+#sidebar-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    height: 120px; /* set this same as #sidebar: bottom */
+    padding-top: 20px;
+    text-align: center;
+    /* border: 2px solid red; */
+}
+
+/* Quesions */
 #questions {
     position: absolute;
     top: 55px;
@@ -35,24 +53,13 @@
     text-decoration: none;
 }
 
-#sidebar-buttons {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 20%;
-    height: 120px; /* set this same as #sidebar: bottom */
-    padding-top: 20px;
-    text-align: center;
-    /* border: 2px solid red; */
-}
-
 #sidebar-buttons a {
     text-align: center;
     width: 99%;
     margin-bottom: 10px;
 }
 
-.float-btn{
+.float-btn-plus{
 	position: fixed;
 	width: 60px;
 	height: 60px;
@@ -98,9 +105,8 @@
 /* https://codepen.io/pafnuty/pen/XWJRgbJ */
 /* Line breaking from flex container */
 .break {
-	flex-basis: 100%;
-	height: 0;
+    flex-basis: 100%;
+    height: 0;
     width: 100%;
     overflow: hidden;
-  }
-
+}
