@@ -122,6 +122,12 @@
 
 <!------------------------------------------------- CONTENT ----------------------------------------------------->
 <!--------------------------------------------------------------------------------------------------------------->
+
+{% if this_assignment == None %}
+{% if all_assignments|length != 0 %}
+{% endif %}
+{% endif %}
+
 <div class="col-sm-4" id="questions">
     {% for question in questions %}
     <div class="card mt-3 mx-2">
@@ -177,10 +183,20 @@
     {% endfor %}
 </div>
 
-<a href="{% if this_assignment != None %}{% url 'setter:add-question' this_assignment.id %}{% else %}#{% endif %}"
-    name="add-question" class="btn float-btn {% if this_assignment == None %}disabled{% endif %}">
+<!-- {% if this_assignment != None and questions|length == 0 %}
+
+{% endif %} -->
+
+<!-- Rounded plus button -->
+<!-- <a href="{% if this_assignment != None %}{% url 'setter:add-question' this_assignment.id %}{% else %}#{% endif %}"
+    name="add-question" class="btn float-btn-plus {% if this_assignment == None %}disabled{% endif %}">
     <i class="bi bi-plus-circle-fill tooltip-test" title="Add question"></i>
-</a>
+</a> -->
+
+<a href="{% if this_assignment != None %}{% url 'setter:add-question' this_assignment.id %}{% else %}#{% endif %}"
+    name="add-question"
+    class="btn btn-primary btn-rounded float-btn-pill {% if this_assignment == None %}disabled{% endif %}">
+    Add question</a>
 
 </div>
 {% endblock content %}

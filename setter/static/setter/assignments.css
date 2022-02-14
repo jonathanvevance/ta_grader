@@ -64,16 +64,35 @@
     transition: all 0.1s;
 }
 
-.float-btn:focus {
+.float-btn-plus:focus {
     box-shadow: none;
 }
 
-.float-btn i {
+.float-btn-plus i {
     color: #007bff; /* bootstrap primary */
 }
 
-.float-btn:hover {
+.float-btn-plus:hover {
 	transform: scale(1.05);
+}
+
+/* pill button */
+.float-btn-pill{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-align: center;
+    transition: all 0.1s;
+}
+
+.float-btn-pill:focus {
+    box-shadow: none;
+}
+
+.float-btn-pill:hover {
+    transform: scale(1.05);
 }
 
 /* https://codepen.io/pafnuty/pen/XWJRgbJ */
@@ -84,3 +103,4 @@
     width: 100%;
     overflow: hidden;
   }
+
