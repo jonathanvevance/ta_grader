@@ -144,13 +144,10 @@
     {% endfor %}
 </div>
 
-{% if this_assignment != None %}
-<a href="{% url 'setter:add-question' this_assignment.id %}" name="add-question"
-    class="btn float-btn {% if this_assignment == None %}disabled{% endif %}">
+<a href="{% if this_assignment != None %}{% url 'setter:add-question' this_assignment.id %}{% else %}#{% endif %}"
+    name="add-question" class="btn float-btn {% if this_assignment == None %}disabled{% endif %}">
     <i class="bi bi-plus-circle-fill tooltip-test" title="Add question"></i>
 </a>
-{% endif %}
-
 
 </div>
 {% endblock content %}
