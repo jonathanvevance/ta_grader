@@ -74,6 +74,14 @@ def add_question(request, pk):
     }
     return render(request, "setter/question.html", context)
 
+def delete_question(request, pk):
+
+    question = Question.objects.get(id=pk)
+    assignment = question.assignment
+    question.delete()
+
+    return redirect(reverse("setter:assignment-id", args=[assignment.id]))
+
 def add_assignment(request):
 
     assignment_name = request.POST.get("assignment-name")

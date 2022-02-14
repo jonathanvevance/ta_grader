@@ -1,7 +1,6 @@
 from django.urls import path
 
 from . import views
-from . import trigger
 
 app_name = 'setter'
 
@@ -16,10 +15,10 @@ urlpatterns = [
     path('add_assignment/', views.add_assignment, name='add-assignment'),
     path('delete_assignment/<int:pk>', views.delete_assignment, name='delete-assignment'),
 
-    # Question add and edit pages
+    # Question add, edit and delete pages
     path('add_question/<int:pk>', views.add_question, name='add-question'),
     path('edit_question/<int:pk>', views.edit_question, name='edit-question'),
+    path('delete_question/<int:pk>', views.delete_question, name='delete-question'),
 
     # Trigger functions - dummy pages
-    path('trigger_delete_question/<int:pk>', trigger.delete_question, name='trigger-delete-question'),
 ]
