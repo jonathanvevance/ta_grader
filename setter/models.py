@@ -7,6 +7,9 @@ class Assignment(models.Model):
     def __str__(self):
         return self.title
 
+    def set_title(self, title):
+        self.title = title
+
 class Question(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, null=True, blank=True)

@@ -11,9 +11,10 @@ urlpatterns = [
     path('all_assignments/', views.assignments, name='assignments'),
     path('show_assignment/<int:pk>', views.assignments, name='assignment-id'),
 
-    # Assignment add and delete pages
+    # Assignment add, rename and delete pages
     path('add_assignment/', views.add_assignment, name='add-assignment'),
     path('delete_assignment/<int:pk>', views.delete_assignment, name='delete-assignment'),
+    path('rename_assignment/<int:pk>', views.rename_assignment, name='rename-assignment'),
 
     # Question add, edit and delete pages
     path('add_question/<int:pk>', views.add_question, name='add-question'),

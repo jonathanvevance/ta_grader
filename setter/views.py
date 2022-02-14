@@ -90,6 +90,15 @@ def add_assignment(request):
 
     return redirect(reverse("setter:assignment-id", args=[assignment.id]))
 
+def rename_assignment(request, pk):
+
+    assignment = Assignment.objects.get(id=pk)
+    assignment_name = request.POST.get("assignment-name")
+    assignment.set_title(assignment_name)
+    assignment.save()
+
+    return redirect(reverse("setter:assignment-id", args=[assignment.id]))
+
 def delete_assignment(request, pk):
 
     assignment = Assignment.objects.get(id=pk)
