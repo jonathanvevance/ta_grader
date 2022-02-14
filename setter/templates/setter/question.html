@@ -1,0 +1,26 @@
+{% extends 'setter/base.html' %}
+
+{% block css_content %}
+<style>
+    .django-ckeditor-widget {
+        display: inline !important;
+    }
+</style>
+{% endblock css_content %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="form-group">
+        <form method="POST" action="#">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Submit</button>
+            <!-- TODO: Back button to go straight to assignment page -->
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

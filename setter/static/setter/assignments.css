@@ -1,0 +1,77 @@
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+}
+
+/* * {
+    border: 2px solid red;
+} */
+
+
+#sidebar {
+    position: absolute;
+    top: 55px;
+    bottom: 120px; /* space for buttons */
+    left: 0;
+    width: 20%;
+    overflow-y: scroll;
+    /* border: 2px solid red; */
+}
+
+#questions {
+    position: absolute;
+    top: 55px;
+    bottom: 0px;
+    right: 0;
+    overflow-y: scroll;
+    width: 80%;
+}
+
+.question-link {
+    font-size: 90%;
+    font-weight: 400;
+    float: right;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+#sidebar-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    height: 120px; /* set this same as #sidebar: bottom */
+    padding-top: 20px;
+    text-align: center;
+    /* border: 2px solid red; */
+}
+
+#sidebar-buttons a {
+    text-align: center;
+    width: 99%;
+    margin-bottom: 10px;
+}
+
+.float-btn{
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 50px;
+	right: 40px;
+	border-radius: 50px;
+	text-align: center;
+    font-size: 60px;
+    transition: all 0.1s;
+}
+
+.float-btn:focus {
+    box-shadow: none;
+}
+
+.float-btn i {
+    color: #007bff; /* bootstrap primary */
+}
+
+.float-btn:hover {
+	transform: scale(1.05);
+}
