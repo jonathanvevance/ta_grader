@@ -128,8 +128,9 @@
     <!-- Messages -->
     {% include 'setter/messages.html' %}
 
-    {% if questions|length == 0 %}
-    <div id="instructions" class="container m-5">
+    <!-- Instructions -->
+    <!-- {% if questions|length == 0 and this_assignment == None %}
+    <div id="instructions" class="container m-5 border-2">
         <h2 id="header" class="text-decoration-underline">Instructions for setting assignments</h2>
         <ul id="body" class="mt-4">
             <li> Click "Add Assignment" and type in the assignment's name. </li>
@@ -141,8 +142,7 @@
             <li> To see the instructions again, click on "Assignments" on the navbar. </li>
         </ul>
     </div>
-
-    {% endif %}
+    {% endif %} -->
 
     {% for question in questions %}
     <div class="card mt-3 mx-2">

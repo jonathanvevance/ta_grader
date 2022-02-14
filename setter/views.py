@@ -49,6 +49,8 @@ def edit_question(request, pk):
             form.save()
             messages.success(request, "Edits made to the question have been saved")
             return redirect(reverse("setter:assignment-id", args=[assignment.id]))
+        else:
+            messages.error(request, "Errors need to be resolved")
 
     context = {
         'title': 'Question',
@@ -70,6 +72,8 @@ def add_question(request, pk):
             assignment_id = request.POST.get('assignment')
             messages.success(request, "The added question has been saved")
             return redirect(reverse("setter:assignment-id", args=[assignment_id]))
+        else:
+            messages.error(request, "Errors need to be resolved")
 
     context = {
         'title': 'Question',
@@ -91,10 +95,10 @@ def add_assignment(request):
 
     assignment_name = request.POST.get("assignment-name")
     assignment = Assignment(title=assignment_name)
+
     try:
         assignment.full_clean()
     except ValidationError as e:
-        print(e.__dict__)
         messages.error(request, Assignment.validation_error_message())
         return redirect(reverse("setter:assignments"))
 
@@ -108,6 +112,13 @@ def rename_assignment(request, pk):
     assignment = Assignment.objects.get(id=pk)
     assignment_name = request.POST.get("assignment-name")
     assignment.set_title(assignment_name)
+
+    try:
+        assignment.full_clean()
+    except ValidationError as e:
+        messages.error(request, Assignment.validation_error_message())
+        return redirect(reverse("setter:assignments"))
+
     assignment.save()
     messages.success(request, "The assignment has been renamed")
 

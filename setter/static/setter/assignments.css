@@ -4,6 +4,10 @@
 }
 
 /* Instructions */
+#instructions {
+    margin-top: 200px;
+}
+
 #instructions #header {
     margin-left: 10%;
 }
