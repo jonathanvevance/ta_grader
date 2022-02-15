@@ -12,9 +12,9 @@
     <!--------------------------------------------------------------------------------------------------------------->
 
     <div class="col-sm-4 bg-dark text-light pt-2" id="sidebar">
-        <div class="row text-primary fs-4 text-start text-decoration-italics">
+        <!-- <div class="row text-primary fs-4 text-start text-decoration-italics">
             <p class="mb-1"><span>Assignments</span></p>
-        </div>
+        </div> -->
         {% for assignment in all_assignments %}
         <div class="row {% if this_assignment == assignment %}active-border{% endif %} ">
             <a href="{% url 'setter:assignment-id' assignment.id %}"

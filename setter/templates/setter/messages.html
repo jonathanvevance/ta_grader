@@ -5,7 +5,8 @@
         width: 30%;
         top: 60px;
         left: 50%;
-        transform: translate(-30%, 0);
+        /* Adjusted for 30% width */
+        transform: translate(-17%, 0);
         z-index: 100;
     }
 </style>
@@ -22,9 +23,9 @@
 
 <script>
     const alertButtons = document.getElementsByClassName("alert-button");  // Return an array
-    setTimeout(function () {
-        for (let i = 0; i < alertButtons.length; ++i) {
-            alertButtons[i].click()
-        }
-    }, 3000);
+    // setTimeout(function () {
+    //     for (let i = 0; i < alertButtons.length; ++i) {
+    //         alertButtons[i].click()
+    //     }
+    // }, 3000);
 </script>
