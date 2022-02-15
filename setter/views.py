@@ -70,7 +70,7 @@ def add_question(request, pk):
         if form.is_valid():
             form.save()
             assignment_id = request.POST.get('assignment')
-            messages.success(request, "The added question has been saved")
+            messages.success(request, "The question has been saved")
             return redirect(reverse("setter:assignment-id", args=[assignment_id]))
         else:
             messages.error(request, "Errors need to be resolved")
