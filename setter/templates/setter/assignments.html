@@ -13,9 +13,8 @@
 
     <div class="col-sm-4 bg-dark text-light pt-2" id="sidebar">
         {% for assignment in all_assignments %}
-        <div class="row">
-            <a href="{% url 'setter:assignment-id' assignment.id %}"
-                class="nav-link lead text-primary text-start col-md-10 px-2">
+        <div class="row mx-0">
+            <a href="{% url 'setter:assignment-id' assignment.id %}" class="nav-link lead text-start col-md-10 px-1">
                 <span class="ms-1 {% if this_assignment == assignment %}border-bottom{% endif %}">
                     {{ assignment.title }}</span></a>
             <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
@@ -200,10 +199,11 @@
     <i class="bi bi-plus-circle-fill tooltip-test" title="Add question"></i>
 </a> -->
 
-<a href="{% if this_assignment != None %}{% url 'setter:add-question' this_assignment.id %}{% else %}#{% endif %}"
-    name="add-question"
-    class="btn btn-primary btn-rounded float-btn-pill {% if this_assignment == None %}disabled{% endif %}">
+{% if this_assignment != None %}
+<a href="{% url 'setter:add-question' this_assignment.id %}" name="add-question"
+    class="btn btn-primary btn-rounded float-btn-pill">
     Add question</a>
+{% endif %}
 
 </div>
 {% endblock content %}
