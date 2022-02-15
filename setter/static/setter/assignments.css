@@ -59,6 +59,12 @@
     text-align: center;
 }
 
+#sidebar-buttons a {
+    text-align: center;
+    width: 99%;
+    margin-bottom: 10px;
+}
+
 /* Quesions */
 #questions {
     position: absolute;
@@ -77,10 +83,13 @@
     text-decoration: none;
 }
 
-#sidebar-buttons a {
-    text-align: center;
-    width: 99%;
-    margin-bottom: 10px;
+.hover-border {
+    transition: border-color 0.5s, box-shadow 0.2s;
+}
+
+.hover-border:hover {
+  border-color: rgba(60, 60, 60, 0.7);
+  box-shadow: 0px 0px 5px 1px rgba(60, 60, 60, 0.6);
 }
 
 .float-btn-plus{
