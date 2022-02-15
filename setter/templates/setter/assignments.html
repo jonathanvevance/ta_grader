@@ -18,7 +18,7 @@
         {% for assignment in all_assignments %}
         <div class="row {% if this_assignment == assignment %}active-border{% endif %} ">
             <a href="{% url 'setter:assignment-id' assignment.id %}"
-                class="nav-link hover-glow lead text-primary text-start col-md-10 px-2">
+                class="nav-link hover-glow fs-6 text-primary text-start col-md-10 px-2">
                 <span class="ms-1">{{ assignment.title }}</span></a>
             <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
                 data-bs-target="#rename-assignment-{{ assignment.id }}"
