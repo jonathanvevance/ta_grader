@@ -49,6 +49,10 @@
     overflow-y: scroll;
 }
 
+.assignment-title {
+    font-size: 18px;
+}
+
 #sidebar-buttons {
     position: fixed;
     bottom: 0;

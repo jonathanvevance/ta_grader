@@ -12,7 +12,7 @@ class Assignment(models.Model):
 
     @classmethod
     def validation_error_message(self):
-        return "Assignment not added. Title can not have more than 22 characters"
+        return "Title can not have more than 22 characters"
 
 class Question(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
