@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Assignment(models.Model):
     title = models.CharField(max_length=22, unique=True)
@@ -18,7 +18,7 @@ class Question(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     tag_line = models.CharField(max_length=100)
-    description = RichTextField()
+    description = RichTextUploadingField()
 
     def __str__(self):
         return self.title
