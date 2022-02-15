@@ -11,21 +11,24 @@
     <!------------------------------------------------- SIDEBAR ----------------------------------------------------->
     <!--------------------------------------------------------------------------------------------------------------->
 
-    <div class="col-sm-4 bg-dark text-light pt-2" id="sidebar">
-        <!-- <div class="row text-primary fs-4 text-start text-decoration-italics">
-            <p class="mb-1"><span>Assignments</span></p>
-        </div> -->
+    <div class="col-sm-4 bg-dark pt-2" id="sidebar">
         {% for assignment in all_assignments %}
-        <div class="row {% if this_assignment == assignment %}active-border{% endif %} ">
+        <div
+            class="row white-text-lvl-1 {% if this_assignment == assignment %} active-glow {% else %} hover-glow hover-white-text-lvl-2 {% endif %} ">
+
+            <!-- Assignment tile -->
             <a href="{% url 'setter:assignment-id' assignment.id %}"
-                class="nav-link hover-glow assignment-title text-primary text-start col-md-10 px-2">
+                class="my-2 assignment-title text-start col-md-10 px-2 {% if this_assignment == assignment %} white-text-lvl-3 {% else %} hover-white-text-lvl-2 {% endif %}">
                 <span class="ms-1">{{ assignment.title }}</span></a>
+
+            <!-- Assignment tile edit button -->
             <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
                 data-bs-target="#rename-assignment-{{ assignment.id }}"
-                class="col-md-2 d-flex justify-content-center align-items-center hover-glow "><i
+                class="col-md-2 hover-white-text-lvl-2 d-flex justify-content-center align-items-center"><i
                     class="bi bi-pen"></i></a>
         </div>
 
+        <!-- Assignment title rename modal -->
         <div class="modal fade text-dark" id="rename-assignment-{{ assignment.id }}" tabindex="-1"
             aria-labelledby="rename-assignment-{{ assignment.id }}-label" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -61,7 +64,7 @@
         {% endif %}
     </div>
 
-
+    <!-- Add and delete assignment buttons -->
     <div id="sidebar-buttons" class="bg-dark">
         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-assignment">
             <span class="ms-1">Add Assignment</span>
@@ -129,26 +132,28 @@
     <!-- Messages -->
     {% include 'setter/messages.html' %}
 
-    <!-- Empty messages -->
+    <!-- No assignments message -->
     {% if all_assignments|length == 0 %}
     <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
         <p>NO ASSIGNMENTS YET</p>
     </div>
     {% endif %}
 
+    <!-- No questions message -->
     {% if questions|length == 0 and this_assignment != None %}
     <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
         <p>NO QUESTIONS YET</p>
     </div>
     {% endif %}
 
+    <!-- No assignment selected message -->
     {% if questions|length == 0 and this_assignment == None and all_assignments|length != 0 %}
     <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
         <p>NO ASSIGNMENT SELECTED </p>
     </div>
     {% endif %}
 
-    <!-- Questions -->
+    <!-- Questions cards -->
     {% for question in questions %}
     <div class="card hover-border mt-3 mx-2">
         <div class="card-body">
@@ -158,6 +163,7 @@
         </div>
     </div>
 
+    <!-- View questions modal -->
     <div class="modal fade" id="question-modal-{{ question.id }}" tabindex="-1"
         aria-labelledby="question-modal-{{ question.id }}-label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -183,6 +189,7 @@
         </div>
     </div>
 
+    <!-- Delete question confirmation modal -->
     <div class="modal fade" id="delete-confirm" aria-hidden="true" aria-labelledby="delete-confirm-label" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -209,6 +216,7 @@
     <i class="bi bi-plus-circle-fill tooltip-test" title="Add question"></i>
 </a> -->
 
+<!-- Add question rounded pill button -->
 {% if this_assignment != None %}
 <a href="{% url 'setter:add-question' this_assignment.id %}" name="add-question"
     class="btn btn-primary btn-rounded float-btn-pill">

@@ -3,7 +3,21 @@
     /* Remove scrollbar space */
 }
 
-/* Empty messages */
+/* <div class="row {% if this_assignment == assignment %}active-glow{% endif %} ">
+
+            <!-- Assignment title -->
+            <a href="{% url 'setter:assignment-id' assignment.id %}"
+                class="nav-link assignment-title text-start col-md-10 px-2 {% if this_assignment != assignment %} hover-glow text-white-text-lvl-1 {% else %} text-white-text-lvl-2 {% endif %}">
+                <span class="ms-1 ">{{ assignment.title }}</span></a>
+
+            <!-- Assignment title edit button -->
+            <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
+                data-bs-target="#rename-assignment-{{ assignment.id }}"
+                class="col-md-2 d-flex justify-content-center align-items-center {% if this_assignment != assignment %} hover-glow text-muted {% else %} text-light {% endif %} ">
+                <i class="bi bi-pen"></i></a>
+        </div> */
+
+        /* Empty messages */
 #empty-messages {
     width: 40%;
     margin: 20% auto;
@@ -15,22 +29,22 @@
     margin: 10px 0;
 }
 
-/* Sidebar */
-.hover-outline:hover {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    outline-offset: -5px;
+a {
+    color: #777;
+    text-decoration: none;
 }
 
+a:hover {
+    color: #777;
+}
+
+/* Sidebar */
 .hover-glow:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
 .active-glow {
-    background-color: rgba(255, 255, 255, 0.08);
-}
-
-.active-glow:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .active-border {
@@ -38,6 +52,22 @@
         linear-gradient(rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0.6)) top/ 95% 2px no-repeat,
         linear-gradient(rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0.6)) bottom/ 95% 2px no-repeat,
         #212529;
+}
+
+.white-text-lvl-1 {
+    color: #777;
+}
+
+.hover-white-text-lvl-2:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.white-text-lvl-3 {
+    color: rgba(255, 255, 255, 1);
+}
+
+.white-text-lvl-3:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
 #sidebar {
