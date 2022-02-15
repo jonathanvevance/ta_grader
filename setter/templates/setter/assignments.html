@@ -54,7 +54,13 @@
             </div>
         </div>
         {% endfor %}
+
+        <!-- Arrow down -->
+        {% if all_assignments|length == 0 %}
+        <i class="bi bi-chevron-double-down"></i>
+        {% endif %}
     </div>
+
 
     <div id="sidebar-buttons" class="bg-dark">
         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-assignment">

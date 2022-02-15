@@ -65,6 +65,13 @@
     margin-bottom: 10px;
 }
 
+.bi-chevron-double-down {
+    position: fixed;
+    bottom: 120px;
+    left: 90px;
+    font-size: 500%;
+}
+
 /* Quesions */
 #questions {
     position: absolute;
