@@ -98,9 +98,8 @@ def add_assignment(request):
 
     try:
         assignment.full_clean()
-    except ValidationError as e:
+    except ValidationError:
         messages.error(request, Assignment.validation_error_message())
-        return redirect(reverse("setter:assignments"))
 
     assignment.save()
     messages.success(request, "The assignment has been added")
@@ -115,9 +114,8 @@ def rename_assignment(request, pk):
 
     try:
         assignment.full_clean()
-    except ValidationError as e:
+    except ValidationError:
         messages.error(request, Assignment.validation_error_message())
-        return redirect(reverse("setter:assignments"))
 
     assignment.save()
     messages.success(request, "The assignment has been renamed")
