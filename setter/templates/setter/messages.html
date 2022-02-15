@@ -1,7 +1,29 @@
-{% for message in messages %}
-<div class="alert {{ message.tags }} alert-dismissible" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-    {{ message }}
+<style>
+    #alert-container {
+        position: fixed;
+        text-align: center;
+        width: 50%;
+        left: 50%;
+        top: 60px;
+        transform: translate(-30%, 0);
+    }
+</style>
+
+<div id="alert-container">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible fade show mt-2 mb-0" role="alert">
+        <button type="button" class="btn-close alert-button" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
+
+<script>
+    const alertButtons = document.getElementsByClassName("alert-button");  // Return an array
+    setTimeout(function () {
+        for (let i = 0; i < alertButtons.length; ++i) {
+            alertButtons[i].click()
+        }
+    }, 3000);
+</script>

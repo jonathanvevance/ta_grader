@@ -3,18 +3,16 @@
     /* Remove scrollbar space */
 }
 
-/* Instructions */
-#instructions {
-    margin-top: 200px;
+/* Empty messages */
+#empty-messages {
+    width: 40%;
+    margin: 20% auto;
+    border: 3px dashed #777;
+    border-radius: 10px;
 }
 
-#instructions #header {
-    margin-left: 10%;
-}
-
-#instructions #body {
-    font-size: 150%;
-    margin-left: 10%;
+#empty-messages p {
+    margin: 10px 0;
 }
 
 /* Sidebar */

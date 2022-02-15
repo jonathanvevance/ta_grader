@@ -128,22 +128,26 @@
     <!-- Messages -->
     {% include 'setter/messages.html' %}
 
-    <!-- Instructions -->
-    <!-- {% if questions|length == 0 and this_assignment == None %}
-    <div id="instructions" class="container m-5 border-2">
-        <h2 id="header" class="text-decoration-underline">Instructions for setting assignments</h2>
-        <ul id="body" class="mt-4">
-            <li> Click "Add Assignment" and type in the assignment's name. </li>
-            <li> Click on an assignment in the sidebar (left pane) to select it.</li>
-            <li> Selecting an assignment activates the "Add question" button.</li>
-            <li> Question cards for each assignment will be shown in this space.</li>
-            <li> Click on the question cards to see more options (Edit, Delete,..) </li>
-            <li> Select an assignment and click on "Delete Assignment" to delete it. </li>
-            <li> To see the instructions again, click on "Assignments" on the navbar. </li>
-        </ul>
+    <!-- Empty messages -->
+    {% if all_assignments|length == 0 %}
+    <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
+        <p>NO ASSIGNMENTS YET</p>
     </div>
-    {% endif %} -->
+    {% endif %}
 
+    {% if questions|length == 0 and this_assignment != None %}
+    <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
+        <p>NO QUESTIONS YET</p>
+    </div>
+    {% endif %}
+
+    {% if questions|length == 0 and this_assignment == None and all_assignments|length != 0 %}
+    <div id="empty-messages" class="p-2 fs-2 text-muted text-center">
+        <p>NO ASSIGNMENT SELECTED </p>
+    </div>
+    {% endif %}
+
+    <!-- Questions -->
     {% for question in questions %}
     <div class="card mt-3 mx-2">
         <div class="card-body">
