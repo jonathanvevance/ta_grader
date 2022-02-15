@@ -16,6 +16,30 @@
 }
 
 /* Sidebar */
+.hover-outline:hover {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: -5px;
+}
+
+.hover-glow:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.active-glow {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.active-glow:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.active-border {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0.6)) top/ 95% 2px no-repeat,
+        linear-gradient(rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0.6)) bottom/ 95% 2px no-repeat,
+        #212529;
+}
+
 #sidebar {
     position: absolute;
     top: 55px;

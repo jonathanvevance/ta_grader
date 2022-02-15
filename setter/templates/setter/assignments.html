@@ -12,14 +12,18 @@
     <!--------------------------------------------------------------------------------------------------------------->
 
     <div class="col-sm-4 bg-dark text-light pt-2" id="sidebar">
+        <div class="row text-primary fs-4 text-start text-decoration-italics">
+            <p class="mb-1"><span>Assignments</span></p>
+        </div>
         {% for assignment in all_assignments %}
-        <div class="row mx-0">
-            <a href="{% url 'setter:assignment-id' assignment.id %}" class="nav-link lead text-start col-md-10 px-1">
-                <span class="ms-1 {% if this_assignment == assignment %}border-bottom{% endif %}">
-                    {{ assignment.title }}</span></a>
+        <div class="row {% if this_assignment == assignment %}active-border{% endif %} ">
+            <a href="{% url 'setter:assignment-id' assignment.id %}"
+                class="nav-link hover-glow lead text-primary text-start col-md-10 px-2">
+                <span class="ms-1">{{ assignment.title }}</span></a>
             <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
                 data-bs-target="#rename-assignment-{{ assignment.id }}"
-                class="col-md-2 d-flex justify-content-center align-items-center"><i class="bi bi-pen"></i></a>
+                class="col-md-2 d-flex justify-content-center align-items-center hover-glow "><i
+                    class="bi bi-pen"></i></a>
         </div>
 
         <div class="modal fade text-dark" id="rename-assignment-{{ assignment.id }}" tabindex="-1"
