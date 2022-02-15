@@ -55,14 +55,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 ]
 
-# TODO: limit toolbar options
-CKEDITOR_CONFIGS = {
-    'default': {
-        'height': 'full',
-        'width': 'full',
-    },
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -151,6 +143,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 'full',
+        'width': 'full',
+    },
+}
+
+CKEDITOR_RESTRICT_BY_DATE = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
