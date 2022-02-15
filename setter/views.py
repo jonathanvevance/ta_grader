@@ -100,6 +100,7 @@ def add_assignment(request):
         assignment.full_clean()
     except ValidationError:
         messages.error(request, Assignment.validation_error_message())
+        return redirect(request.META['HTTP_REFERER'])
 
     assignment.save()
     messages.success(request, "The assignment has been added")
@@ -116,6 +117,7 @@ def rename_assignment(request, pk):
         assignment.full_clean()
     except ValidationError:
         messages.error(request, Assignment.validation_error_message())
+        return redirect(request.META['HTTP_REFERER'])
 
     assignment.save()
     messages.success(request, "The assignment has been renamed")
