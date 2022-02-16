@@ -14,18 +14,20 @@
     <div class="col-sm-4 bg-dark pt-2" id="sidebar">
         {% for assignment in all_assignments %}
         <div
-            class="row white-text-lvl-1 {% if this_assignment == assignment %} active-glow {% else %} hover-glow hover-white-text-lvl-2 {% endif %} ">
+            class="row
+            {% if this_assignment == assignment %} active-bg-glow {% else %} hover-bg-glow mid-white-hover {% endif %} ">
 
             <!-- Assignment tile -->
-            <a href="{% url 'setter:assignment-id' assignment.id %}"
-                class="my-2 assignment-title text-start col-md-10 px-2 {% if this_assignment == assignment %} white-text-lvl-3 {% else %} hover-white-text-lvl-2 {% endif %}">
+            <a href="{% url 'setter:assignment-id' assignment.id %}" class="assignment-title-selector my-2 col-md-10 px-2 fs-assignment-title text-start
+                {% if this_assignment == assignment %} max-white {% else %} mid-white-hover {% endif %}">
                 <span class="ms-1">{{ assignment.title }}</span></a>
 
             <!-- Assignment tile edit button -->
             <a href="#rename-assignment-{{ assignment.id }}" data-bs-toggle="modal"
                 data-bs-target="#rename-assignment-{{ assignment.id }}"
-                class="col-md-2 hover-white-text-lvl-2 d-flex justify-content-center align-items-center"><i
-                    class="bi bi-pen"></i></a>
+                class="rename-assignment-selector col-md-2 d-flex justify-content-center align-items-center
+                    {% if this_assignment == assignment %} almost-max-white max-white-hover {% else %} mid-white-hover {% endif %}">
+                <i class="bi bi-pen"></i></a>
         </div>
 
         <!-- Assignment title rename modal -->
@@ -224,4 +226,26 @@
 {% endif %}
 
 </div>
+
+<script>
+
+    const renameButtons = document.getElementsByClassName("rename-assignment-selector");
+
+    for (let i = 0; i < renameButtons.length; ++i) {
+        renameButtons[i].addEventListener("mouseover", function () {
+            if (!(renameButtons[i].classList.contains("max-white-hover"))) {
+                let titleElement = renameButtons[i].parentElement.getElementsByClassName("assignment-title-selector")[0]
+                titleElement.classList.add("mid-white")
+            }
+        })
+
+        renameButtons[i].addEventListener("mouseout", function () {
+            if (!(renameButtons[i].classList.contains("max-white-hover"))) {
+                let titleElement = renameButtons[i].parentElement.getElementsByClassName("assignment-title-selector")[0]
+                titleElement.classList.remove("mid-white")
+            }
+        })
+    }
+
+</script>
 {% endblock content %}
