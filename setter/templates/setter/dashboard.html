@@ -3,4 +3,35 @@
 {% block content %}
 {% include 'setter/messages.html' %}
 
+<div class="container">
+
+    <div class="row begin-countdown">
+        <div class="col-md-12 text-center">
+            <progress value="1000" max="1000" id="pageBeginCountdown"></progress>
+        </div>
+    </div>
+</div>
+
+<script>
+    // https://stackoverflow.com/a/50846458
+    ProgressCountdown(1000, 'pageBeginCountdown').then(value => alert(`Page has started: ${value}.`));
+
+    function ProgressCountdown(timeleft, bar) {
+        return new Promise((resolve, reject) => {
+            var countdownTimer = setInterval(() => {
+                timeleft -= 10;
+
+                document.getElementById(bar).value = timeleft;
+
+                if (timeleft <= 0) {
+                    clearInterval(countdownTimer);
+                    resolve(true);
+                }
+            }, 50);
+        });
+    }
+
+
+</script>
+
 {% endblock content %}
