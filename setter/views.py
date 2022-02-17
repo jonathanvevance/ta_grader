@@ -85,11 +85,9 @@ def add_question(request, pk):
 def delete_question(request, pk):
 
     question = Question.objects.get(id=pk)
-    assignment = question.assignment
     question.delete()
     messages.success(request, "The question has been deleted")
-
-    return redirect(reverse("setter:assignment-id", args=[assignment.id]))
+    return redirect(request.META['HTTP_REFERER'])
 
 def add_assignment(request):
 
@@ -117,12 +115,10 @@ def rename_assignment(request, pk):
         assignment.full_clean()
     except ValidationError:
         messages.error(request, Assignment.validation_error_message())
-        return redirect(request.META['HTTP_REFERER'])
 
     assignment.save()
     messages.success(request, "The assignment has been renamed")
-
-    return redirect(reverse("setter:assignment-id", args=[assignment.id]))
+    return redirect(request.META['HTTP_REFERER'])
 
 def delete_assignment(request, pk):
 
