@@ -182,3 +182,29 @@
     width: 100%;
     overflow: hidden;
 }
+
+/* undo alerts */
+.undo-container {
+    position: fixed;
+    text-align: center;
+    width: 15%;
+    top: 60px;
+    left: 84%;
+    z-index: 100;
+}
+
+.undo-assg-alert {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#undo-assg-progress-div {
+    height: 10px;
+    border-top-left-radius:0;
+    border-top-right-radius: 0;
+}
+
+#undo-assg-progressbar {
+    /* background-color: silver; */
+    background-color: rgba(0, 0, 0, 0.2);
+}

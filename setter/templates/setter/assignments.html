@@ -2,7 +2,7 @@
 
 {% block css_content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'setter/assignments.css' %}">
+<link rel="stylesheet" href="{% static 'setter/css/assignments.css' %}">
 {% endblock css_content %}
 
 {% block content %}
@@ -124,6 +124,22 @@
         </div>
     </div>
 
+    <!-- Undo delete assignment -->
+    <a href="">
+        <div class="undo-container">
+            <div id="undo-assg-div" class="alert alert-dark alert-dismissible undo-assg-alert fade show mt-2 mb-0"
+                role="alert">
+                <button type="button" class="btn-close" id="undo-assg-close-button" data-bs-dismiss="alert"
+                    aria-label="Close">
+                </button>
+                Click to Undo Delete
+            </div>
+            <div class="progress" id="undo-assg-progress-div">
+                <div class="progress-bar" id="undo-assg-progressbar" role="progressbar"></div>
+            </div>
+        </div>
+    </a>
+
 </div>
 
 <!------------------------------------------------- CONTENT ----------------------------------------------------->
@@ -227,27 +243,5 @@
 
 </div>
 
-<script>
-
-    const renameButtons = document.getElementsByClassName("rename-button-js");
-
-    for (let i = 0; i < renameButtons.length; ++i) {
-        renameButtons[i].addEventListener("mouseover", function () {
-            let renameIcon = renameButtons[i].getElementsByClassName("rename-icon-js")[0]
-            if (!(renameIcon.classList.contains("max-white-hover"))) {
-                let titleElement = renameButtons[i].parentElement.getElementsByClassName("assignment-title-js")[0]
-                titleElement.classList.add("mid-white")
-            }
-        })
-
-        renameButtons[i].addEventListener("mouseout", function () {
-            let renameIcon = renameButtons[i].getElementsByClassName("rename-icon-js")[0]
-            if (!(renameIcon.classList.contains("max-white-hover"))) {
-                let titleElement = renameButtons[i].parentElement.getElementsByClassName("assignment-title-js")[0]
-                titleElement.classList.remove("mid-white")
-            }
-        })
-    }
-
-</script>
+<script src="{% static 'setter/js/assignments.js' %}"></script>
 {% endblock content %}

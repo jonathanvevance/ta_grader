@@ -1,5 +1,5 @@
 <style>
-    #alert-container {
+    #message-container {
         position: fixed;
         text-align: center;
         width: 30%;
@@ -11,10 +11,10 @@
     }
 </style>
 
-<div id="alert-container">
+<div id="message-container">
     {% for message in messages %}
     <div class="alert {{ message.tags }} alert-dismissible fade show mt-2 mb-0" role="alert">
-        <button type="button" class="btn-close alert-button" data-bs-dismiss="alert" aria-label="Close">
+        <button type="button" class="btn-close mssg-close-button" data-bs-dismiss="alert" aria-label="Close">
         </button>
         {{ message }}
     </div>
@@ -22,10 +22,10 @@
 </div>
 
 <script>
-    const alertButtons = document.getElementsByClassName("alert-button");  // Return an array
+    const closeMessageButtons = document.getElementsByClassName("mssg-close-button");  // Return an array
     setTimeout(function () {
-        for (let i = 0; i < alertButtons.length; ++i) {
-            alertButtons[i].click()
+        for (let i = 0; i < closeMessageButtons.length; ++i) {
+            closeMessageButtons[i].click()
         }
     }, 3000);
 </script>
