@@ -16,7 +16,7 @@
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
-            <a href="{% url 'setter:assignment-id' assignment_id %}" class="btn btn-danger me-1">Cancel</a>
+            <a href="javascript:history.go(-1)" class="btn btn-danger me-1">Cancel</a>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>
