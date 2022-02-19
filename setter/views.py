@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 from .models import Assignment, Question
 from .forms import QuestionForm
+from .tasks import schedule_hard_delete_assignment
 
 
 def dashboard(request):
@@ -96,8 +98,8 @@ def add_assignment(request):
 
     try:
         assignment.full_clean()
-    except ValidationError:
-        messages.error(request, Assignment.validation_error_message())
+    except ValidationError as e:
+        messages.error(request, Assignment.validation_error_message(e))
         return redirect(request.META['HTTP_REFERER'])
 
     assignment.save()
@@ -113,17 +115,31 @@ def rename_assignment(request, pk):
 
     try:
         assignment.full_clean()
-    except ValidationError:
-        messages.error(request, Assignment.validation_error_message())
+    except ValidationError as e:
+        messages.error(request, Assignment.validation_error_message(e))
+        return redirect(request.META['HTTP_REFERER'])
 
     assignment.save()
     messages.success(request, "The assignment has been renamed")
     return redirect(request.META['HTTP_REFERER'])
 
-def delete_assignment(request, pk):
+def soft_delete_assignment(request, pk):
 
     assignment = Assignment.objects.get(id=pk)
-    assignment.delete()
+    assignment.delete() # only soft deletion
     messages.success(request, "The assignment has been deleted")
+
+    request.session['deleted_pk'] = pk
+    messages.add_message(request, settings.UNDO_MSSG_LEVEL, "Click to Undo")
+    schedule_hard_delete_assignment(pk) # scheduled hard deletion
+
+    return redirect(reverse("setter:assignments"))
+
+def restore_assignment(request):
+
+    pk = request.session['deleted_pk']
+    assignment = Assignment.all_objects.get(id=pk)
+    assignment.restore()
+    del request.session['deleted_pk']
 
     return redirect(reverse("setter:assignments"))

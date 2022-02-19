@@ -1,11 +1,8 @@
 {% extends 'setter/base.html' %}
+{% load static %}
 
 {% block css_content %}
-<style>
-    .django-ckeditor-widget {
-        display: inline !important;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'setter/css/question.css' %}">
 {% endblock css_content %}
 
 {% block content %}

@@ -15,11 +15,8 @@
     <title>Document</title>
     {% endif %}
 
-    <style>
-        body {
-            padding-top: 55px;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'setter/css/base.css' %}">
 
     <!-- to include css -->
     {% block css_content %} {% endblock css_content %}

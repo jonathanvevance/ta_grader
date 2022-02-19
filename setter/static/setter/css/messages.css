@@ -1,0 +1,36 @@
+#message-container {
+    position: fixed;
+    text-align: center;
+    width: 30%;
+    top: 60px;
+    left: 50%;
+    /* Adjusted for 30% width */
+    transform: translate(-17%, 0);
+    z-index: 100;
+}
+
+/* undo alerts */
+.undo-container {
+    position: fixed;
+    text-align: center;
+    width: 15%;
+    top: 60px;
+    left: 84%;
+    z-index: 100;
+}
+
+.undo-assg-alert {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#undo-assg-progress-div {
+    height: 10px;
+    border-top-left-radius:0;
+    border-top-right-radius: 0;
+}
+
+#undo-assg-progressbar {
+    /* background-color: silver; */
+    background-color: rgba(0, 0, 0, 0.2);
+}

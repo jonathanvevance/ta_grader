@@ -1,0 +1,5 @@
+#logo-img {
+    width: 220px;
+    /* calc is based on 20% view width for sidebar. 10px is arbitrary */
+    margin-left: calc(0.5 * (100vw * 0.2 - 220px) - 10px);
+}
