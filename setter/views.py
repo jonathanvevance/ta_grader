@@ -129,7 +129,7 @@ def soft_delete_assignment(request, pk):
     assignment.delete() # only soft deletion
     messages.success(request, "The assignment has been deleted")
 
-    request.session['deleted_pk'] = pk
+    request.session['deleted_assg_pk'] = pk
     messages.add_message(request, settings.UNDO_MSSG_LEVEL, "Click to Undo")
     schedule_hard_delete_assignment(pk) # scheduled hard deletion
 
@@ -137,9 +137,9 @@ def soft_delete_assignment(request, pk):
 
 def restore_assignment(request):
 
-    pk = request.session['deleted_pk']
+    pk = request.session['deleted_assg_pk']
     assignment = Assignment.all_objects.get(id=pk)
     assignment.restore()
-    del request.session['deleted_pk']
+    del request.session['deleted_assg_pk']
 
     return redirect(reverse("setter:assignments"))
