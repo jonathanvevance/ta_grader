@@ -10,13 +10,20 @@ setTimeout(function () {
 const undoAssgDiv = document.getElementById("undo-assg-div");
 const undoAssgProgressbar = document.getElementById("undo-assg-progressbar");
 const undoAssgProgressDiv = document.getElementById("undo-assg-progress-div");
+const undoAssgCloseButton = document.getElementById("undo-assg-close-button");
+
+undoAssgCloseButton.addEventListener('click', function () {
+    this.style.display = "none"
+    undoAssgDiv.style.display = "none"
+    undoAssgProgressDiv.style.display = "none"
+})
 
 // https://stackoverflow.com/a/50846458
 ProgressCountdown(undoAssgProgressbar).then(value => function () {
 
     setTimeout(function () {
-        undoAssgDiv.style.display = "none"
-        undoAssgProgressDiv.style.display = "none"
+        // undoAssgDiv.style.display = "none"
+        // undoAssgProgressDiv.style.display = "none"
     }, 500); // HACK: delay to handle poor handling of small width %ages
 }());
 

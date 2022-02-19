@@ -10,6 +10,12 @@
 }
 
 /* undo alerts */
+.outer-container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
 .undo-container {
     position: fixed;
     text-align: center;
@@ -33,4 +39,11 @@
 #undo-assg-progressbar {
     /* background-color: silver; */
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+#undo-assg-close-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 500;
 }

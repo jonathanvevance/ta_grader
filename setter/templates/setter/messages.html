@@ -18,20 +18,24 @@
 
 {% for message in messages %}
 {% if message.tags == 'alert-undo' %}
-<a href="{% url 'setter:restore-assignment' %}">
-    <div class="undo-container">
-        <div id="undo-assg-div" class="alert alert-dark alert-dismissible undo-assg-alert fade show mt-2 mb-0"
-            role="alert">
-            <button type="button" class="btn-close" id="undo-assg-close-button" data-bs-dismiss="alert"
-                aria-label="Close">
-            </button>
-            {{ message }}
+<div class="outer-container">
+    <a href="{% url 'setter:restore-assignment' %}">
+        <div class="undo-container">
+            <div id="undo-assg-div" class="alert alert-dark alert-dismissible undo-assg-alert fade show mt-2 mb-0"
+                role="alert">
+                {{ message }}
+            </div>
+            <div class="progress" id="undo-assg-progress-div">
+                <div class="progress-bar" id="undo-assg-progressbar" role="progressbar"></div>
+            </div>
         </div>
-        <div class="progress" id="undo-assg-progress-div">
-            <div class="progress-bar" id="undo-assg-progressbar" role="progressbar"></div>
-        </div>
-    </div>
-</a>
+    </a>
+    <!-- outside the a-tag  -->
+    <button type="button" class="btn-close" id="undo-assg-close-button" data-bs-dismiss="alert"
+        aria-label="Close"></button>
+</div>
+
+
 {% endif %}
 {% endfor %}
 
