@@ -11,15 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-from django.contrib.messages import constants as messages
-
-MESSAGE_TAGS = {
-    messages.DEBUG: 'alert-info',
-    messages.INFO: 'alert-info',
-    messages.SUCCESS: 'alert-success',
-    messages.WARNING: 'alert-warning',
-    messages.ERROR: 'alert-danger',
-}
+from django.contrib.messages import constants as mssg_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -53,6 +45,7 @@ INSTALLED_APPS = [
     # Libraries
     'ckeditor',
     'ckeditor_uploader',
+    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -142,17 +135,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'height': 'full',
-        'width': 'full',
-    },
-}
-
-CKEDITOR_RESTRICT_BY_DATE = False
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -164,3 +146,28 @@ if DEBUG:
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         }
 }
+
+# My custom settings
+UNDO_MSSG_LEVEL = 50
+
+MESSAGE_TAGS = {
+    mssg_constants.DEBUG: 'alert-info',
+    mssg_constants.INFO: 'alert-info',
+    mssg_constants.SUCCESS: 'alert-success',
+    mssg_constants.WARNING: 'alert-warning',
+    mssg_constants.ERROR: 'alert-danger',
+    UNDO_MSSG_LEVEL: 'alert-undo',
+}
+
+HARD_DELETE_TIMER = 6 # one second extra from 5 second undo countdown timer
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 'full',
+        'width': 'full',
+    },
+}
+
+CKEDITOR_RESTRICT_BY_DATE = False

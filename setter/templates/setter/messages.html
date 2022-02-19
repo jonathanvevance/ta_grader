@@ -1,31 +1,44 @@
-<style>
-    #alert-container {
-        position: fixed;
-        text-align: center;
-        width: 30%;
-        top: 60px;
-        left: 50%;
-        /* Adjusted for 30% width */
-        transform: translate(-17%, 0);
-        z-index: 100;
-    }
-</style>
+{% load static %}
 
-<div id="alert-container">
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'setter/css/messages.css' %}">
+{% endblock css_content %}
+
+<div id="message-container">
     {% for message in messages %}
+    {% if message.tags != 'alert-undo' %}
     <div class="alert {{ message.tags }} alert-dismissible fade show mt-2 mb-0" role="alert">
-        <button type="button" class="btn-close alert-button" data-bs-dismiss="alert" aria-label="Close">
+        <button type="button" class="btn-close mssg-close-button" data-bs-dismiss="alert" aria-label="Close">
         </button>
         {{ message }}
     </div>
+    {% endif %}
     {% endfor %}
 </div>
 
-<script>
-    const alertButtons = document.getElementsByClassName("alert-button");  // Return an array
-    setTimeout(function () {
-        for (let i = 0; i < alertButtons.length; ++i) {
-            alertButtons[i].click()
-        }
-    }, 3000);
-</script>
+{% for message in messages %}
+{% if message.tags == 'alert-undo' %}
+<div class="outer-container">
+    <a href="{% url 'setter:restore-assignment' %}">
+        <div class="undo-container">
+            <div id="undo-assg-div" class="alert alert-dark alert-dismissible undo-assg-alert fade show mt-2 mb-0"
+                role="alert">
+                {{ message }}
+            </div>
+            <div class="progress" id="undo-assg-progress-div">
+                <div class="progress-bar" id="undo-assg-progressbar" role="progressbar"></div>
+            </div>
+        </div>
+    </a>
+    <!-- outside the a-tag  -->
+    <button type="button" class="btn-close" id="undo-assg-close-button" data-bs-dismiss="alert"
+        aria-label="Close"></button>
+</div>
+
+
+{% endif %}
+{% endfor %}
+
+{% block js_content %}
+<script src="{% static 'setter/js/messages.js' %}"></script>
+{% endblock js_content %}

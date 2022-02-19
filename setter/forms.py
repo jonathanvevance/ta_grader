@@ -5,7 +5,7 @@ from .models import Question
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = '__all__'
+        exclude = ['deleted_at']
 
         widgets = {
             'assignment': forms.Select(attrs = {"class": 'form-control'}),

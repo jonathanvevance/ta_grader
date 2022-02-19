@@ -15,6 +15,12 @@
 }
 
 /* Sidebar */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #sidebar a {
     color: #777;
     text-decoration: none;
@@ -127,8 +133,8 @@
 }
 
 .hover-border:hover {
-  border-color: rgba(60, 60, 60, 0.7);
-  box-shadow: 0px 0px 5px 1px rgba(60, 60, 60, 0.6);
+  border-color: rgba(60, 60, 60, 0.3);
+  box-shadow: 0px 0px 5px 1px rgba(60, 60, 60, 0.2);
 }
 
 .float-btn-plus{
@@ -152,7 +158,7 @@
 }
 
 .float-btn-plus:hover {
-	transform: scale(1.05);
+	transform: scale(1.03);
 }
 
 /* pill button */
@@ -171,7 +177,7 @@
 }
 
 .float-btn-pill:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* https://codepen.io/pafnuty/pen/XWJRgbJ */

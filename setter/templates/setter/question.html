@@ -1,11 +1,8 @@
 {% extends 'setter/base.html' %}
+{% load static %}
 
 {% block css_content %}
-<style>
-    .django-ckeditor-widget {
-        display: inline !important;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'setter/css/question.css' %}">
 {% endblock css_content %}
 
 {% block content %}
@@ -19,8 +16,8 @@
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
+            <a href="javascript:history.go(-1)" class="btn btn-danger me-1">Cancel</a>
             <button type="submit" class="btn btn-success">Submit</button>
-            <!-- TODO: Back button to go straight to assignment page -->
         </form>
     </div>
 </div>

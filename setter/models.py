@@ -1,8 +1,10 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 
-class Assignment(models.Model):
-    title = models.CharField(max_length=22, unique=True)
+from .soft_deletion import SoftDeletionModel
+
+class Assignment(SoftDeletionModel):
+    title = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.title
@@ -11,10 +13,19 @@ class Assignment(models.Model):
         self.title = title
 
     @classmethod
-    def validation_error_message(self):
-        return "Title can not have more than 22 characters"
+    def validation_error_message(self, e):
 
-class Question(models.Model):
+        error_message = e.messages[0]
+        if "Ensure this value has" in error_message:
+            return "Title must be at most 100 characters"
+        elif error_message == "Assignment with this Title already exists.":
+            return "Assignment with this title already exists"
+        elif error_message == "This field cannot be blank.":
+            return "Assignment title can not be blank"
+
+        return "Unknown error :/"
+
+class Question(SoftDeletionModel):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     tag_line = models.CharField(max_length=100)
