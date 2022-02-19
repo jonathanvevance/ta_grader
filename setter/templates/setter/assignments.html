@@ -183,19 +183,21 @@
                 <div class="modal-footer">
                     <a href="{% url 'setter:edit-question' question.id %}" class="btn btn-primary button">Edit
                         Question</a>
-                    <button type="button" class="btn btn-danger" data-bs-target="#delete-confirm" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">Delete Question</button>
+                    <button type="button" class="btn btn-danger" data-bs-target="#delete-confirm-{{ question.id }}"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">Delete Question</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Delete question confirmation modal -->
-    <div class="modal fade" id="delete-confirm" aria-hidden="true" aria-labelledby="delete-confirm-label" tabindex="-1">
+    <div class="modal fade" id="delete-confirm-{{ question.id }}" aria-hidden="true"
+        aria-labelledby="delete-confirm-{{ question.id }}-label" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="delete-confirm-label">Delete Question Confirmation</h5>
+                    <h5 class="modal-title" id="delete-confirm-{{ question.id }}-label">Delete Question Confirmation
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
