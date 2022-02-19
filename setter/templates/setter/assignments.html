@@ -18,7 +18,7 @@
             {% if this_assignment == assignment %} active-bg-glow {% else %} hover-bg-glow mid-white-hover {% endif %} ">
 
             <!-- Assignment tile -->
-            <a href="{% url 'setter:assignment-id' assignment.id %}" class="assignment-title-js py-2 col-md-10 px-2 fs-assignment-title text-start
+            <a href="{% url 'setter:assignment-id' assignment.id %}" class="assignment-title-js py-2 col-md-10 px-2 fs-assignment-title text-start truncate
                 {% if this_assignment == assignment %} max-white {% else %} mid-white-hover {% endif %}">
                 <span class="ms-1">{{ assignment.title }}</span></a>
 

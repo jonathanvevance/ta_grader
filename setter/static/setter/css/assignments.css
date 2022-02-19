@@ -15,6 +15,12 @@
 }
 
 /* Sidebar */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #sidebar a {
     color: #777;
     text-decoration: none;
