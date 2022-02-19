@@ -81,6 +81,7 @@ def add_question(request, pk):
         'title': 'Question',
         'navbar_link': None,
         'form': form,
+        'assignment_id': pk,
     }
     return render(request, "setter/question.html", context)
 
