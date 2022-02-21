@@ -5,7 +5,8 @@ from . import views
 app_name = 'setter'
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
+    # path('', views.dashboard, name='dashboard'),
+    path('', views.assignments, name='assignments_'),
 
     # Assignments base and selected pages
     path('all_assignments/', views.assignments, name='assignments'),
