@@ -22,8 +22,8 @@ undoAssgCloseButton.addEventListener('click', function () {
 ProgressCountdown(undoAssgProgressbar).then(value => function () {
 
     setTimeout(function () {
-        // undoAssgDiv.style.display = "none"
-        // undoAssgProgressDiv.style.display = "none"
+        undoAssgDiv.style.display = "none"
+        undoAssgProgressDiv.style.display = "none"
     }, 500); // HACK: delay to handle poor handling of small width %ages
 }());
 
