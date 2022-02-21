@@ -157,4 +157,3 @@ media/
 # cache-files (my)
 *.pyc
 setter/migrations/
-ta_grader.code-workspace
