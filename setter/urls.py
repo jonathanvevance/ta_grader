@@ -6,7 +6,7 @@ app_name = 'setter'
 
 urlpatterns = [
     # path('', views.dashboard, name='dashboard'),
-    path('', views.assignments, name='assignments_'),
+    path('', views.assignments, name='dashboard'),
 
     # Assignments base and selected pages
     path('all_assignments/', views.assignments, name='assignments'),
